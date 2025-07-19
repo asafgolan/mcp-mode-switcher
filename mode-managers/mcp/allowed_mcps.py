@@ -2,10 +2,12 @@
 
 import sys
 from pathlib import Path
+
+# Add parent directory to path for relative imports
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 from modes import ASK, ARCHITECT, CODE, ORCHESTRATOR, DEBUG
-from mode_managers.mcp.mcp_list import CONTEXT7, MEMORY, MLX_BATCH_GENERATOR, REDDIT_MCP
+from mcp_list import CONTEXT7, MEMORY, MLX_BATCH_GENERATOR, REDDIT_MCP
 
 # Mode to MCP server mappings
 MODE_MCP_MAPPING = {
@@ -14,12 +16,12 @@ MODE_MCP_MAPPING = {
         "disabled": [MLX_BATCH_GENERATOR, REDDIT_MCP]
     },
     ARCHITECT: {
-        "enabled": [MEMORY, CONTEXT7, MLX_BATCH_GENERATOR],
-        "disabled": [REDDIT_MCP]
+        "enabled": [MEMORY, CONTEXT7],
+        "disabled": [MLX_BATCH_GENERATOR, REDDIT_MCP]
     },
     CODE: {
-        "enabled": [MEMORY],
-        "disabled": [CONTEXT7, MLX_BATCH_GENERATOR, REDDIT_MCP]
+        "enabled": [MEMORY, CONTEXT7],
+        "disabled": [MLX_BATCH_GENERATOR, REDDIT_MCP]
     },
     ORCHESTRATOR: {
         "enabled": [MEMORY, CONTEXT7, MLX_BATCH_GENERATOR, REDDIT_MCP],

@@ -9,35 +9,8 @@ from datetime import datetime
 # Mode constants
 ALL_MODES = ["ask", "architect", "code", "orchestrator", "debug"]
 
-# MCP server constants
-CONTEXT7 = "context7"
-MEMORY = "memory"
-MLX_BATCH_GENERATOR = "mlx-batch-generator"
-REDDIT_MCP = "reddit-mcp"
-
-# Mode to MCP mappings
-MODE_MCP_MAPPING = {
-    "ask": {
-        "enabled": [MEMORY, CONTEXT7],
-        "disabled": [MLX_BATCH_GENERATOR, REDDIT_MCP]
-    },
-    "architect": {
-        "enabled": [MEMORY, CONTEXT7, MLX_BATCH_GENERATOR],
-        "disabled": [REDDIT_MCP]
-    },
-    "code": {
-        "enabled": [MEMORY],
-        "disabled": [CONTEXT7, MLX_BATCH_GENERATOR, REDDIT_MCP]
-    },
-    "orchestrator": {
-        "enabled": [MEMORY, CONTEXT7, MLX_BATCH_GENERATOR, REDDIT_MCP],
-        "disabled": []
-    },
-    "debug": {
-        "enabled": [],
-        "disabled": []
-    }
-}
+# Import MCP mappings from allowed_mcps.py
+from allowed_mcps import MODE_MCP_MAPPING
 
 def get_enabled_mcps(mode):
     """Get list of MCPs that should be enabled for a mode"""
